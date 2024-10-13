@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwind UI with Vanilla JS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Optional custom styles */
+      body {
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <!-- Toggle Switch (Tailwind UI with Vanilla JS) -->
+    <div class="flex items-center space-x-4">
+      <span id="statusText" class="text-gray-600">Switch is OFF</span>
+
+      <!-- On: "bg-indigo-600", Off: "bg-gray-200" -->
+      <span
+        id="toggleSwitch"
+        aria-checked="false"
+        class="bg-gray-200 relative inline-block h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors duration-200"
+        role="checkbox"
+        tabindex="0"
+      >
+        <!-- On: "translate-x-5", Off: "translate-x-0" -->
+        <span
+          id="switchHandle"
+          class="translate-x-0 inline-block h-5 w-5 rounded-full bg-white shadow transform transition duration-200"
+        ></span>
+      </span>
+    </div>
+
+    <script>
+      // JavaScript for toggling the switch
+      const toggleSwitch = document.getElementById('toggleSwitch');
+      const switchHandle = document.getElementById('switchHandle');
+      const statusText = document.getElementById('statusText');
+
+      let isOn = false; // Initial state is OFF
+
+      toggleSwitch.addEventListener('click', function () {
+        isOn = !isOn; // Toggle the state
+
+        // Update classes based on state (ON/OFF)
+        if (isOn) {
+          toggleSwitch.classList.remove('bg-gray-200');
+          toggleSwitch.classList.add('bg-indigo-600');
+          switchHandle.classList.remove('translate-x-0');
+          switchHandle.classList.add('translate-x-5');
+          statusText.textContent = 'Switch is ON';
+        } else {
+          toggleSwitch.classList.remove('bg-indigo-600');
+          toggleSwitch.classList.add('bg-gray-200');
+          switchHandle.classList.remove('translate-x-5');
+          switchHandle.classList.add('translate-x-0');
+          statusText.textContent = 'Switch is OFF';
+        }
+      });
+    </script>
+  </body>
+</html>
