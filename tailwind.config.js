@@ -4,10 +4,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        tanOfficial: ['TanOfficial', 'sans-serif'],
+        unblocker: ['unblocker', 'sans-serif'],
       },
     },
   },
   plugins: [],
 };
-
